@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 
-
 class Buscador extends Component {
     searchRef = React.createRef();
     handleSubmitSearch =(e)=>{
