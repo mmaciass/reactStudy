@@ -5,7 +5,7 @@ class TodoForm extends Component {
         super();
         this.state = {
             title: '',
-            responsibe: '',
+            responsible: '',
             descripcion: '',
             priority: 'low'
         };

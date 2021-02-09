@@ -23,6 +23,17 @@ class App extends Component {
     }
     dataSearch = (termino)=>{
         console.log((termino));
+        this.restoreTodo();
+        const filtrados = this.state.todos.filter(todo=>todo.title===termino);
+        console.log(filtrados);
+        this.setState({
+            todos: filtrados
+        })
+    }
+    restoreTodo(){
+        this.state = {
+            todos
+        }
     }
 
     render() {
@@ -49,7 +60,7 @@ class App extends Component {
         })
         return (
             <div className="App">
-                <Navigation/>
+                <Navigation total={todos.length}/>
                 <div className="container mt-3 p-0">
                     <div className="jumbotron bg-light p-4">
                         <h3 className="text-center">Buscador de Tareas</h3>

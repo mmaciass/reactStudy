@@ -27,7 +27,7 @@ class Navigation extends Component{
                         <div className="col-md-2 text-white pt-2">
                             <span className="font-weight-bold">Task</span>
                             <span className="badge badge-pill badge-light ml-2">
-                                {this.state.todos.length}
+                                {this.props.total}
                             </span>
                         </div>
                     </div>
