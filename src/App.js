@@ -21,20 +21,36 @@ class App extends Component {
             todos: [...this.state.todos, todo]
         })
     }
-    dataSearch = (termino)=>{
-        console.log((termino));
-        this.restoreTodo();
+    //otra forma de eliminar
+    /*deleteTask =(index)=>{
+        const deleted = this.state.todos;
+        deleted.splice(index, 1)
+       this.setState({
+           todos: deleted
+       })
+    }*/
+    deleteTask =(index)=>{
+        const deleted = this.state.todos.filter((todo, i)=> i !==index);
+        this.setState({
+            todos: deleted
+        })
+
+    }
+  dataSearch = (termino)=>{
         const filtrados = this.state.todos.filter(todo=>todo.title===termino);
-        console.log(filtrados);
         this.setState({
             todos: filtrados
         })
+      console.log(filtrados);
     }
-    restoreTodo(){
-        this.state = {
-            todos
-        }
-    }
+  restoreTodo = (todo)=>{
+        const list = this.state.todos.map((todo)=>{
+            console.log(todos);
+            this.state = {
+                todos
+            }
+        })
+      }
 
     render() {
         const todos = this.state.todos.map((todo, i) => {
@@ -52,7 +68,7 @@ class App extends Component {
                             <strong>{todo.responsible}</strong>
                         </div>
                         <div className="card-footer">
-                            <button className="bg-danger">Delete</button>
+                            <button className="bg-danger" onClick={this.deleteTask.bind(this, i)}>Delete</button>
                         </div>
                     </div>
                 </div>
@@ -64,7 +80,7 @@ class App extends Component {
                 <div className="container mt-3 p-0">
                     <div className="jumbotron bg-light p-4">
                         <h3 className="text-center">Buscador de Tareas</h3>
-                        <Buscador dataSearch ={this.dataSearch}   />
+                        <Buscador dataSearch ={this.dataSearch} restoreTodo ={this.restoreTodo} />
                     </div>
                 </div>
 

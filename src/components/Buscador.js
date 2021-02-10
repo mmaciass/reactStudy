@@ -7,12 +7,12 @@ class Buscador extends Component {
         const termino = this.searchRef.current.value;
         this.props.dataSearch(termino);
     }
+    restore = ()=>{
 
-    handleRestore(e){
-        e.preventDefault();
-        this.props.restoreTodo()
-
+        this.props.restoreTodo(this.state);
+        console.log(this.state)
     }
+
     render() {
         return (
             <form onSubmit={this.handleSubmitSearch}>
@@ -25,7 +25,7 @@ class Buscador extends Component {
                         <input type="submit" className="btn btn-lg btn-danger btn-block" value="Buscar"/>
                     </div>
                     <div className="form-group col-md-2">
-                        <input type="btn" onClick={this.handleRestore} className="btn btn-lg btn-info btn-block" value="Limpiar"/>
+                        <input type="btn" onClick={this.restore} className="btn btn-lg btn-info btn-block" value="Limpiar"/>
                     </div>
 
                 </div>

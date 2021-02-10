@@ -16,6 +16,7 @@ class TodoForm extends Component {
         e.preventDefault();
         this.props.onAddTodo(this.state)
 
+
  }
  handleInput(e){
         const {value,name} = e.target;
