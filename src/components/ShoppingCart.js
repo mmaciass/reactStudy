@@ -17,6 +17,7 @@ const listCar = (props) => {
                 <td>{item.price}</td>
 
               </tr>
+
             ))}
           <tr>
             <th className="text-right">Total a pagar:{props.total}</th>
