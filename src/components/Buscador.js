@@ -8,9 +8,7 @@ class Buscador extends Component {
         this.props.dataSearch(termino);
     }
     restore = ()=>{
-
-        this.props.restoreTodo(this.state);
-        console.log(this.state)
+        this.props.restoreTodo();
     }
 
     render() {
@@ -25,7 +23,7 @@ class Buscador extends Component {
                         <input type="submit" className="btn btn-lg btn-danger btn-block" value="Buscar"/>
                     </div>
                     <div className="form-group col-md-2">
-                        <input type="btn" onClick={this.restore} className="btn btn-lg btn-info btn-block" value="Limpiar"/>
+                        <button type="button" onClick={this.restore} className="btn btn-lg btn-info btn-block">Limpiar</button>
                     </div>
 
                 </div>

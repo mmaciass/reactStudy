@@ -15,7 +15,7 @@ class Navigation extends Component{
             <div className={classes.Prueba}>
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-10">
+                        <div className="col-md-8">
                             <nav className = "navba navbar-expand-lg">
                                 <ul className="navbar-nav mx-auto">
                                     <li className="nav-item"><a href="" className="nav-link text-white font-weight-bold">Inicio</a></li>
@@ -25,10 +25,14 @@ class Navigation extends Component{
                             </nav>
                         </div>
                         <div className="col-md-2 text-white pt-2">
-                            <span className="font-weight-bold">Task</span>
+                            <span className="font-weight-bold">Productos</span>
                             <span className="badge badge-pill badge-light ml-2">
                                 {this.props.total}
                             </span>
+                        </div>
+                        <div className="col-md-2 text-white pt-2">
+                            <a href="#shopCar" className="font-weight-bold">Ver carro de compra</a>
+
                         </div>
                     </div>
                 </div>

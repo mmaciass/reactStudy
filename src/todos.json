@@ -1,28 +1,27 @@
 {
   "todos": [
     {
-      "title": "task1",
-      "responsible": "Teo",
-      "description": "Lorem impsum",
-      "priority": "low"
+      "title": "Producto1",
+      "price": "50USD",
+      "description": "Lorem impsum"
     },
     {
-      "title": "task2",
-      "responsible": "Carlos",
-      "description": "Lorem impsum",
-      "priority": "medium"
+      "title": "Producto2",
+      "price": "100USD",
+      "description": "Lorem impsum"
+
     },
     {
-      "title": "task3",
-      "responsible": "Frank",
-      "description": "Lorem impsum",
-      "priority": "medium"
+      "title": "Producto3",
+      "price": "20USD",
+      "description": "Lorem impsum"
+
     },
     {
-      "title": "task4",
-      "responsible": "Lucia",
-      "description": "Lorem impsum",
-      "priority": "high"
+      "title": "Producto4",
+      "price": "300USD",
+      "description": "Lorem impsum"
+
     }
   ]
 }

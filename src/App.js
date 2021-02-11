@@ -6,21 +6,27 @@ import {todos} from './todos.json';
 import TodoForm from './components/TodoForm.js';
 import Buscador from './components/Buscador';
 import classes from './components/Buscador.Module.css';
+import ShoppingCart from './components/ShoppingCart';
+
+const initialState = todos;
+const cart = [];
+
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
-            todos
+            todos: initialState
         }
-        this.addTodoForm = this.addTodoForm.bind(this);
+       // this.addTodoForm = this.addTodoForm.bind(this);
     }
 
-    addTodoForm(todo) {
+    addTodoForm =(todo)=>{
         this.setState({
             todos: [...this.state.todos, todo]
         })
     }
+
     //otra forma de eliminar
     /*deleteTask =(index)=>{
         const deleted = this.state.todos;
@@ -29,28 +35,36 @@ class App extends Component {
            todos: deleted
        })
     }*/
-    deleteTask =(index)=>{
-        const deleted = this.state.todos.filter((todo, i)=> i !==index);
+    deleteTask = (index) => {
+        const deleted = this.state.todos.filter((todo, i) => i !== index);
         this.setState({
             todos: deleted
         })
 
     }
-  dataSearch = (termino)=>{
-        const filtrados = this.state.todos.filter(todo=>todo.title===termino);
+    dataSearch = (termino) => {
         this.setState({
-            todos: filtrados
-        })
-      console.log(filtrados);
+            todos: initialState
+        }, () => {
+            const filtrados = this.state.todos.filter(todo => todo.title.trim().toLowerCase().includes(termino.toLowerCase().trim()));
+            this.setState({
+                todos: filtrados
+            })
+            console.log(filtrados);
+        });
     }
-  restoreTodo = (todo)=>{
-        const list = this.state.todos.map((todo)=>{
-            console.log(todos);
-            this.state = {
-                todos
-            }
+    restoreTodo = () => {
+        this.setState({
+            todos: initialState
+        });
+    }
+    addShopCart = (index) => {
+        const item = this.state.todos.filter((todo, i) => i === index);
+        cart.push(item);
+        this.setState({
+            cart
         })
-      }
+    }
 
     render() {
         const todos = this.state.todos.map((todo, i) => {
@@ -59,16 +73,18 @@ class App extends Component {
                     <div className="card">
                         <div className="card-header">
                             <h1>{todo.title}</h1>
-                            <span className="badge badge-pill p-1 badge-info">
-                                {todo.priority}
-                            </span>
                         </div>
                         <div className="card-body">
+                            <h5>Precio: <span className="text-black-50">
+                                {todo.price}
+                            </span></h5>
                             <p>{todo.description}</p>
-                            <strong>{todo.responsible}</strong>
                         </div>
                         <div className="card-footer">
                             <button className="bg-danger" onClick={this.deleteTask.bind(this, i)}>Delete</button>
+                            <hr/>
+                            <button onClick={this.addShopCart.bind(this, i)} className="bg-success btn-sm">Pagar</button>
+                            <button className="bg-success btn-sm">Carro compra</button>
                         </div>
                     </div>
                 </div>
@@ -80,15 +96,14 @@ class App extends Component {
                 <div className="container mt-3 p-0">
                     <div className="jumbotron bg-light p-4">
                         <h3 className="text-center">Buscador de Tareas</h3>
-                        <Buscador dataSearch ={this.dataSearch} restoreTodo ={this.restoreTodo} />
+                        <Buscador dataSearch={this.dataSearch} restoreTodo={this.restoreTodo}/>
                     </div>
                 </div>
-
                 <img src={logo} className="App-logo" alt="logo"/>
                 <div className="container">
                     <div className="row text-center">
                         <div className="col-md-3 mt-3 border-right">
-                            <h3>Insertar Tarea</h3>
+                            <h3>Insertar Producto</h3>
                             <TodoForm onAddTodo={this.addTodoForm}/>
                         </div>
                         <div className="col-md-9">
@@ -97,6 +112,13 @@ class App extends Component {
                             </div>
                         </div>
                     </div>
+                    <div className="row pt-5">
+                        <div className="col-12">
+                            <h4 className="bg-white" id="shopCar">Listado carro de compra</h4>
+                            <ShoppingCart cart={this.state.cart} /><br/>
+                        </div>
+                    </div>
+
 
                 </div>
 
