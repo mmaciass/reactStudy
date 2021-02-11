@@ -10,6 +10,7 @@ import ShoppingCart from './components/ShoppingCart';
 
 const initialState = todos;
 const cart = [];
+const total = 0;
 
 class App extends Component {
   constructor() {
@@ -65,9 +66,19 @@ class App extends Component {
     const item = this.state.todos.find((todo, i) => i === index);
     cart.push(item);
     this.setState({
-      cart,
+      cart
     });
+
+
   };
+  precioTotal=(index)=>{
+    const cant = 0;
+    const item = this.state.todos.filter((todo, i) => i === index);
+    const total = item[0].price + cant;
+    console.log(total);
+  }
+
+
 
   render() {
     const todos = this.state.todos.map((todo, i) => {
@@ -84,9 +95,9 @@ class App extends Component {
               <p>{todo.description}</p>
             </div>
             <div className="card-footer">
-              <button className="bg-danger" onClick={this.deleteTask.bind(this, i)}>
+              {/*<button className="bg-danger" onClick={this.deleteTask.bind(this, i)}>
                 Delete
-              </button>
+              </button>*/}
               <hr />
               <button onClick={this.addShopCart.bind(this, i)} className="bg-success btn-sm">
                 Pagar
@@ -102,13 +113,14 @@ class App extends Component {
         <Navigation total={todos.length} />
         <div className="container mt-3 p-0">
           <div className="jumbotron bg-light p-4">
-            <h3 className="text-center">Buscador de Tareas</h3>
+            <h3>Buscador</h3>
             <Buscador dataSearch={this.dataSearch} restoreTodo={this.restoreTodo} />
           </div>
         </div>
-        <img src={logo} className="App-logo" alt="logo" />
+        {/*<img src={logo} className="App-logo" alt="logo" />*/}
         <div className="container">
           <div className="row text-center">
+            <div className="col-12"><h1 className="text-center">Listado de productos</h1></div>
             <div className="col-md-3 mt-3 border-right">
               <h3>Insertar Producto</h3>
               <TodoForm onAddTodo={this.addTodoForm} />
@@ -122,7 +134,7 @@ class App extends Component {
               <h4 className="bg-white" id="shopCar">
                 Listado carro de compra
               </h4>
-              <ShoppingCart cart={this.state.cart} />
+              <ShoppingCart cart={this.state.cart} total={this.precioTotal} />
               <br />
             </div>
           </div>

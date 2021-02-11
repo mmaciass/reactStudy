@@ -17,7 +17,7 @@ class Buscador extends Component {
                 <div className="row">
                     <div className="form-group col-md-8">
                         <input ref={this.searchRef} type="text" className="form-control form-control-lg border-primary"
-                               placeholder="Busca tu Tarea..."/>
+                               placeholder="busca el producto..."/>
                     </div>
                     <div className="form-group col-md-2">
                         <input type="submit" className="btn btn-lg btn-danger btn-block" value="Buscar"/>
@@ -25,7 +25,6 @@ class Buscador extends Component {
                     <div className="form-group col-md-2">
                         <button type="button" onClick={this.restore} className="btn btn-lg btn-info btn-block">Limpiar</button>
                     </div>
-
                 </div>
             </form>
         )
