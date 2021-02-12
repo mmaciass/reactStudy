@@ -2,24 +2,24 @@
   "todos": [
     {
       "title": "Producto1",
-      "price": "50USD",
+      "price": 50,
       "description": "Lorem impsum"
     },
     {
       "title": "Producto2",
-      "price": "100USD",
+      "price": 100,
       "description": "Lorem impsum"
 
     },
     {
       "title": "Producto3",
-      "price": "20USD",
+      "price": 20,
       "description": "Lorem impsum"
 
     },
     {
       "title": "Producto4",
-      "price": "300USD",
+      "price": 300,
       "description": "Lorem impsum"
 
     }

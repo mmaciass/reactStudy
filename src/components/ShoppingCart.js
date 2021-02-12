@@ -1,6 +1,20 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 
 const listCar = (props) => {
+  const [lisCarState, setListCarState] = useState({
+    totalProductos: 0
+  });
+  const cantidadTotal =()=>{
+    let cantidad = 0;
+     const price = props.cart.map((item) =>{
+     cantidad += parseFloat(item.price);
+     })
+    setListCarState({
+      totalProductos: cantidad
+    })
+
+  }
+
   return (
     <div className="card">
       <div className="card-body">
@@ -8,21 +22,17 @@ const listCar = (props) => {
           <tr className="bg-danger">
             <th>Producto</th>
             <th>Precio</th>
-            <th>Cantidad</th>
           </tr>
           {props.cart &&
             props.cart.map((item) => (
               <tr>
                 <td>{item.title}</td>
                 <td>{item.price}</td>
-
               </tr>
-
             ))}
-          <tr>
-            <th className="text-right">Total a pagar:{props.total}</th>
-          </tr>
         </table>
+        <span>Pago total:{lisCarState.totalProductos}
+        </span>
       </div>
     </div>
   );

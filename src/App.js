@@ -71,16 +71,6 @@ class App extends Component {
 
 
   };
-  precioTotal=(index)=>{
-    const cant = 0;
-    //recorrer el array del carro de compra
-    const item = this.state.todos.filter((cart, i) => i === index);
-    //obtener el precio de cada item (No toy segura q se haga asi..buaa)
-    const total = item.price + cant;
-
-    console.log(total);
-  }
-
 
 
   render() {
@@ -137,7 +127,7 @@ class App extends Component {
               <h4 className="bg-white" id="shopCar">
                 Listado carro de compra
               </h4>
-              <ShoppingCart cart={this.state.cart}  total={this.state.total}/>
+              <ShoppingCart cart={this.state.cart} />
               <br />
             </div>
           </div>
