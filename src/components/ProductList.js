@@ -3,8 +3,7 @@ import React, {useState} from "react";
 const productList = (props)=>{
    const addShopCart = (index) => {
         const item = props.listProducts.find((todo, i) => i === index);
-        debugger;
-        props.cart.push(item);
+        props.addToCart(item);
     };
 
     return (
