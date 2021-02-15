@@ -17,6 +17,7 @@ class App extends Component {
     super();
     this.state = {
       todos: initialState,
+      cart: []
     };
     // this.addTodoForm = this.addTodoForm.bind(this);
   }
@@ -91,7 +92,7 @@ class App extends Component {
             </div>
             <div className="col-md-9">
               <div className="row">
-                <ProductList listProducts={this.state.todos}/>
+                <ProductList listProducts={this.state.todos} cart={this.state.cart}/>
               </div>
             </div>
           </div>
